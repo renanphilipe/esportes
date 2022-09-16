@@ -7,7 +7,7 @@ function App() {
 
   return (
 
-    <div className='max-w[1344px] max-auto flex flex-col items-center my-20'>
+    <div className='max-w-[1344px] mx-auto flex flex-col items-center my-20'>
       <img src={logoImg} />
       <h1 className='text-6xl text-white font-black'>
         Seu <span className='text-transparent bg-nlw-gradient bg-clip-text'>duo</span> está aqui.</h1>
@@ -66,9 +66,10 @@ function App() {
           </div>
         </a>
       </div>
-      <div className='pt-1 bg-nlw-gradient slef-stretch'>
-        <div className='bg-[#2A2634] px-8 py-6 mt-8 rounded-lg'>
 
+      <div className='pt-1 bg-nlw-gradient self-stretch rounded-lg overflow-hidden'>
+        <div className='bg-[#2A2634] px-8 py-6 rounded-lg'>
+          asdasdw
         </div>
       </div>
     </div>
