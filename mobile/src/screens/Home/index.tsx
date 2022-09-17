@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, Image } from 'react-native';
 
 import logoImg from '../../assets/logo-nlw-esports.png';
@@ -23,7 +22,7 @@ export function Home() {
       />
 
       <GameCard
-        data={GAMES[0]}
+        data={GAMES[0]}  
       />
 
     </View>
