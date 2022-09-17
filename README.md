@@ -5,22 +5,22 @@
 
 ### Game
 
-  id
-  title
-  bannerUrl
+id
+title
+bannerUrl
 
 #### ad
 
-  id
-  gameId
-  name
-  yearsPlaying
-  discord
-  weekDays
-  hoursStart
-  hoursEnd
-  useVoiceChannel
-  createAt
+id
+gameId
+name
+yearsPlaying
+discord
+weekDays
+hoursStart
+hoursEnd
+useVoiceChannel
+createAt
 
 #### Casos de uso
   - Listagem de games com contagem de anúncios
