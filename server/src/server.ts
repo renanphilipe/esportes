@@ -10,18 +10,18 @@ const prisma = new PrismaClient({
 
 //localhost:3333/ads
 
-// Utilizando os metodos HTTP da melhor forma possível.
+// Utilizando os métodos HTTP da melhor forma possível.
 // GET é utilizado quando há necessidade de trazer uma listagem do 
 //banco de dados
 
 // POST é utilizado quando há a necessidade criar uma entidade ou um recurso 
 //novo no banco de dados
 
-// PUT é utilizado quando há a ncessar de atualizar/editar um recurso com 
+// PUT é utilizado quando há a necessidade de atualizar/editar um recurso com 
 //várias informações ao mesmo tempo
 
-// PATHC é utilizado quando há a ncessar de atualizar apenas informações 
-//especificas, ou muito pequenas. Ex.: receber notficação S ou N.
+// PATHC é utilizado quando há a necessidade de atualizar apenas informações 
+//especificas, ou muito pequenas. Ex.: receber notificação S ou N.
 
 // DELETE é utilizado quando há a necessidade de excluir uma informaçõe do 
 //banco de dados
@@ -44,10 +44,9 @@ Como formulários, nome, email...
 
 */
 
-app.get('/games', async function(request, response){ 
+app.get('/games', async (request, response) => { 
     const games = await prisma.game.findMany()
-    return response.json(games);
-    
+    return response.json(games);    
 });
 
 app.post('/ads', (request, response) => { 
