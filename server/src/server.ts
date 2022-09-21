@@ -1,15 +1,22 @@
 import express, { request } from 'express'
+/**
+ * Biblioteca responsável por determinar quais front-ends podem fazer 
+ * requisições ao nosso back-end
+ */
+import cors from 'cors'
 
 import { PrismaClient } from '@prisma/client'
 import { convertHourStringToMinutes } from './utils/convert-hour-string-to-minutes'
+import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-string'
 
 const app = express()
 
 //linha que faz o express entender o json enviado via body
 app.use(express.json())
+app.use(cors())
 
 const prisma = new PrismaClient({
-    log:['query']
+    log: ['query']
 })
 
 //localhost:3333/ads
@@ -48,7 +55,7 @@ Como formulários, nome, email...
 
 */
 
-app.get('/games', async (request, response) => { 
+app.get('/games', async (request, response) => {
     const games = await prisma.game.findMany({
         include: {
             _count: {
@@ -59,10 +66,10 @@ app.get('/games', async (request, response) => {
         }
     })
 
-    return response.json(games);    
+    return response.json(games);
 });
 
-app.post('/games/:id/ads', async (request, response) => { 
+app.post('/games/:id/ads', async (request, response) => {
     const gameId = request.params.id;
     const body: any = request.body;
 
@@ -80,11 +87,11 @@ app.post('/games/:id/ads', async (request, response) => {
     })
 
     return response.status(201).json(ad);
-  });
+});
 
 app.get('/games/:id/ads', async (request, response) => {
-    const gameId= request.params.id;
-    
+    const gameId = request.params.id;
+
     const ads = await prisma.ad.findMany({
         select: {
             id: true,
@@ -108,7 +115,9 @@ app.get('/games/:id/ads', async (request, response) => {
     return response.json(ads.map(ad => {
         return {
             ...ad,
-            weekDays: ad.weekDays.split(',')
+            weekDays: ad.weekDays.split(','),
+            hoursStart: convertMinutesToHourString(ad.hoursStart),
+            hoursEnd: convertMinutesToHourString(ad.hoursEnd),
         }
     }))
 })
@@ -124,11 +133,11 @@ app.get('/ads/:id/discord', async (request, response) => {
             id: adId,
         }
     })
-
+    
     return response.json({
         discord: ad.discord,
     })
- })
+})
 
 
 app.listen(3333)
